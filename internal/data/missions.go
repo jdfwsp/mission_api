@@ -9,7 +9,7 @@ type Mission struct {
 	CreatedAt time.Time `json:"created_at"`
 	Who       string    `json:"who,omitempty"`
 	What      string    `json:"what,omitempty"`
-	Where     string    `json:"where,omitempty,string"`
+	Where     string    `json:"where,omitempty"`
 	When      string    `json:"when,omitempty"`
 	Why       string    `json:"why,omitempty"`
 }

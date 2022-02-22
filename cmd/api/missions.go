@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
 	"time"
@@ -9,7 +10,22 @@ import (
 )
 
 func (app *application) createMissionHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "create a new mission")
+	var input struct {
+		ID    int64    `json:"id"`
+		Who   string   `json:"who"`
+		What  string   `json:"what"`
+		Where string   `json:"where"`
+		When  []string `json:"when"`
+		Why   string   `json:"why"`
+	}
+
+	err := json.NewDecoder(r.Body).Decode(&input)
+	if err != nil {
+		app.errorResponse(w, r, http.StatusBadRequest, err.Error())
+		return
+	}
+
+	fmt.Fprintf(w, "%+v\n", input)
 }
 
 func (app *application) showMissionHandler(w http.ResponseWriter, r *http.Request) {
