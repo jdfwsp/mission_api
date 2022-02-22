@@ -7,9 +7,9 @@ import (
 type Mission struct {
 	ID        int64     `json:"id"`
 	CreatedAt time.Time `json:"created_at"`
-	Who       string    `json:"who"`
-	What      string    `json:"what"`
-	Where     string    `json:"where"`
-	When      string    `json:"when"`
-	Why       string    `json:"why"`
+	Who       string    `json:"who,omitempty"`
+	What      string    `json:"what,omitempty"`
+	Where     string    `json:"where,omitempty,string"`
+	When      string    `json:"when,omitempty"`
+	Why       string    `json:"why,omitempty"`
 }
