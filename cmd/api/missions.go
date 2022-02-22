@@ -29,7 +29,7 @@ func (app *application) showMissionHandler(w http.ResponseWriter, r *http.Reques
 		Why:       "Training",
 	}
 
-	err = app.writeJSON(w, http.StatusOK, mission, nil)
+	err = app.writeJSON(w, http.StatusOK, envelope{"mission": mission}, nil)
 	if err != nil {
 		app.logger.Println(err)
 		http.Error(w, "The server encountered a problem and oculd not process your request", http.StatusInternalServerError)
